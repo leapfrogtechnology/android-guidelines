@@ -45,7 +45,7 @@ Within each Android app module, files are shown in the following groups:
 - res : Contains all non-code resources, such as XML layouts, UI strings, and bitmap images, divided into corresponding sub-directories.
 
 #### The Android Project View
-To see the actual file structure of the project including all files hidden from the Android view, select Projectfrom the dropdown at the top of the Project window.
+To see the actual file structure of the project including all files hidden from the Android view, select Project from the dropdown at the top of the Project window.
 When you select Project view, you can see a lot more files and directories. The most important of which are the following:
 
     module-name/
@@ -213,16 +213,15 @@ Resource files in the values folder should be __plural__, e.g. `strings.xml`, `s
 ##### 2.1.1.1 Don’t ignore exceptions
 Avoid not handling exceptions in the correct manner. For example:
 
-  public void setUserId(String id) {
+  ``public void setUserId(String id) {
       try {
           mUserId = Integer.parseInt(id);
       } catch (NumberFormatException e) { }
-  }
+  }``
 
 This gives no information to both the developer and the user, making it harder to debug and could also leave the user confused if something goes wrong. When catching an exception, we should also always log the error to the console for debugging purposes and if necessary alert the user of the issue. For example:
 
-
-  public void setCount(String count) {
+  ``public void setCount(String count) {
       try {
           count = Integer.parseInt(id);
       } catch (NumberFormatException e) {
@@ -230,7 +229,7 @@ This gives no information to both the developer and the user, making it harder t
           Log.e(TAG, "There was an error parsing the count " + e);
           DialogFactory.showErrorMessage(R.string.error_message_parsing_count);
       }
-  }
+  }``
 
 Here we handle the error appropriately by:
 
@@ -242,15 +241,14 @@ Here we handle the error appropriately by:
 
 Catching exceptions generally should not be done:
 
-
-  public void openCustomTab(Context context, Uri uri) {
+  ``public void openCustomTab(Context context, Uri uri) {
       Intent intent = buildIntent(context, uri);
       try {
           context.startActivity(intent);
       } catch (Exception e) {
           Log.e(TAG, "There was an error opening the custom tab " + e);
       }
-  }
+  }``
 
 Why?
 
