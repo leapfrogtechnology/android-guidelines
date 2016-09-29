@@ -2,6 +2,36 @@
 
 ## Contents
 
+[1. Project Guidelines] (https://github.com/leapfrogtechnology/android-guidelines#1-project-guidelines)
+
+  [1.1 Project structure] (https://github.com/leapfrogtechnology/android-guidelines#11-project-structure)
+
+[1.2 Source file structure] (https://github.com/leapfrogtechnology/android-guidelines#12-source-file-structure)
+
+[1.3 File naming] (https://github.com/leapfrogtechnology/android-guidelines#13-file-naming)
+
+[1.4 gitignore] (https://github.com/leapfrogtechnology/android-guidelines#14-gitignore)
+
+[2. Code Guidelines] (https://github.com/leapfrogtechnology/android-guidelines#2-code-guidelines)
+
+[2.1 Java language rules] (https://github.com/leapfrogtechnology/android-guidelines#21-java-language-rules)
+
+[2.2 Java styles rules] (https://github.com/leapfrogtechnology/android-guidelines#22-java-styles-rules)
+
+[2.3 XML style rule] (https://github.com/leapfrogtechnology/android-guidelines#23-xml-style-rule)
+
+[2.4 Test style rules] (https://github.com/leapfrogtechnology/android-guidelines#24-test-style-rules)
+
+[3. Being consistent] (https://github.com/leapfrogtechnology/android-guidelines#3-being-consistent)
+
+[4. Best practices:] (https://github.com/leapfrogtechnology/android-guidelines#4-best-practices)
+
+[4.1 Storing sensitive data on a local file and not pushing in a git repo] ()
+
+[4.2 MVP Architecture] ()
+
+[5. Sources] (https://github.com/leapfrogtechnology/android-guidelines#5-sources)
+
 ## 1. Project Guidelines
 ### 1.1 Project structure: 
 By default, Android Studio displays your project files in the Android view. This view does not reflect the actual file hierarchy on disk, but is organized by modules and file types to simplify navigation between key source files of your project, hiding certain files or directories that are not commonly used. Some of the structural changes compared to the structure on disk include the following:
@@ -852,4 +882,404 @@ And when calling that method we should break after the comma of each parameter:
     someMethod(context,
             "thisIsSomeLongTextItsQuiteLongIsntIt",
             "someText",
-            0122389236546345
+            01223892365463456,
+            "thisIsSomeLongTextItsQuiteLongIsntIt");
+
+#### 2.2.21 Line-wrapping techniques
+
+When it comes to line-wraps, there’s a few situations where we should be consistent in the way we format code.
+
+**Breaking at Operators**
+
+When we need to break a line at an operator, we break the line before the operator:
+
+    int count = countOne + countTwo - countThree + countFour * countFive - countSix
+            + countOnANewLineBecauseItsTooLong;
+
+If desirable, you can always break after the `=` sign:
+
+    int count =
+            countOne + countTwo - countThree + countFour * countFive + countSix;
+
+**Method Chaining**
+
+When it comes to method chaining, each method call should be on a new line.
+
+Don’t do this:
+
+    Picasso.with(context).load("someUrl").into(imageView);
+
+Instead, do this:
+
+    Picasso.with(context)
+            .load("someUrl")
+            .into(imageView);
+
+**Long Parameters**
+
+In the case that a method contains long parameters, we should line break where appropriate. For example when declaring a method we should break after the last comma of the parameter that fits:
+
+
+    private void someMethod(Context context, String someLongStringName, String text,
+                                long thisIsALong, String anotherString) {               
+    }             
+
+And when calling that method we should break after the comma of each parameter:
+
+    someMethod(context,
+            "thisIsSomeLongTextItsQuiteLongIsntIt",
+            "someText",
+            01223892365463456,
+            "thisIsSomeLongTextItsQuiteLongIsntIt");
+
+#### 2.2.22 Method spacing
+
+There only needs to be a single line space between methods in a class, for example:
+
+Do this:
+
+
+    public String getUserName() {
+        // Code
+    }
+
+    public void setUserName(String name) {
+        // Code
+    }
+
+    public boolean isUserSignedIn() {
+        // Code
+    }
+
+Not this:
+
+
+    public String getUserName() {
+        // Code
+    }
+
+
+    public void setUserName(String name) {
+        // Code
+    }
+
+
+    public boolean isUserSignedIn() {
+        // Code
+    }
+
+#### 2.2.23 Comments
+
+##### 2.2.23.1 Inline comments
+
+Where necessary, inline comments should be used to provide a meaningful description to the reader on what a specific piece of code does. They should only be used in situations where the code may be complex to understand. In most cases however, code should be written in a way that it easy to understand without comments 🙂
+
+**Note:** Code comments do not have to, but should try to, stick to the 100 character rule.
+
+##### 2.2.23.2 JavaDoc style Comments
+
+Whilst a method name should usually be enough to communicate a methods functionality, it can sometimes help to provide JavaDoc style comments. This helps the reader to easily understand the methods functionality, as well as the purpose of any parameters that are being passed into the method.
+
+    /**
+     * Authenticates the user against the API given a User id.
+     * If successful, this returns a success result
+     *
+     * @param userId The user id of the user that is to be authenticated.
+     */
+
+##### 2.2.23.3 Class comments
+
+When creating class comments they should be meaningful and descriptive, using links where necessary. For example:
+
+    /**
+      * RecyclerView adapter to display a list of {@link Post}.
+      * Currently used with {@link PostRecycler} to show the list of Post items.
+      */
+
+Don’t leave author comments, these aren’t useful and provide no real meaningful information when multiple people are to be working on the class.
+
+    /**
+      * Created By Joe 18/06/2016
+      */
+
+##### 2.2.23.4 TODO
+
+Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect. TODOs should include the string TODO in all caps, followed by a colon:
+
+```// TODO: Remove this code after the UrlTable2 has been checked in.```
+and
+
+```// TODO: Change this to use a flag instead of a constant.```
+If your TODO is of the form "At a future date do something" make sure that you either include a very specific date ("Fix by November 2005") or a very specific event ("Remove this code after all production mixers understand protocol V7.").
+
+#### 2.2.24. Sectioning code
+
+##### 2.2.24.1 Java code
+
+If creating ‘sections’ for code, this should be done using the following approach, like this:
+
+    public void method() { }
+
+    public void someOtherMethod() { }
+
+    /********* Mvp Method Implementations  ********/
+
+    public void anotherMethod() { }
+
+    /********* Helper Methods  ********/
+
+    public void someMethod() { }
+
+Not like this:
+
+    public void method() { }
+
+    public void someOtherMethod() { }
+
+    // Mvp Method Implementations
+
+    public void anotherMethod() { }
+
+This makes sectioned methods easier to located in a class.
+
+##### 2.2.24.2 Strings file
+
+String resources defined within the string.xml file should be section by feature, for example:
+
+
+    // User Profile Activity
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+
+    // Settings Activity
+    <string name="message_instructions">...</string>
+
+Not only does this help keep the strings file tidy, but it makes it easier to find strings when they need altering.
+
+##### 2.2.24.3 RxJava chains styling
+
+When chaining Rx operations, every operator should be on a new line, breaking the line before the period `.` . For example:
+
+    return dataManager.getPost()
+                .concatMap(new Func1<Post, Observable<? extends Post>>() {
+                    @Override
+                     public Observable<? extends Post> call(Post post) {
+                         return mRetrofitService.getPost(post.id);
+                     }
+                })
+                .retry(new Func2<Integer, Throwable, Boolean>() {
+                     @Override
+                     public Boolean call(Integer numRetries, Throwable throwable) {
+                         return throwable instanceof RetrofitError;
+                     }
+                });
+
+This makes it easier to understand the flow of operation within an Rx chain of calls.
+
+#### 2.2.25 Butterknife
+
+##### 2.2.25.1 Event listeners
+
+Where possible, make use of Butterknife listener bindings. For example, when listening for a click event instead of doing this:
+
+    mSubmitButton.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            // Some code here...
+        }
+      };
+
+Do this:
+
+    @OnClick(R.id.button_submit)
+    public void onSubmitButtonClick() { }
+    
+#### 2.2.26 Unused elements
+
+All unused fields, imports, methods and classes should be removed from the code base unless there is any specific reasoning behind keeping it there.
+
+### 2.3 XML style rule
+
+#### 2.3.1 Use self closing tags
+
+When a View in an XML layout does not have any child views, self-closing tags should be used.
+
+Do:
+
+    <ImageView
+        android:id="@+id/image_user"
+        android:layout_width="90dp"
+        android:layout_height="90dp" />
+
+Don’t:
+
+    <ImageView
+        android:id="@+id/image_user"
+        android:layout_width="90dp"
+        android:layout_height="90dp">
+    </ImageView>
+
+#### 2.3.2 Resources naming
+
+All resource names and IDs should be written using lowercase and underscores, for example:
+
+    text_username, activity_main, fragment_user, error_message_network_connection
+
+The main reason for this is consistency, it also makes it easier to search for views within layout files when it comes to altering the contents of the file.
+
+#### 2.3.2.1 Id naming
+
+All IDs should be prefixed using the name of the element that they have been declared for.
+
+| Element        | Prefix    |
+|----------------|-----------|
+| ImageView      | image_    |
+| Fragment       | fragment_ |
+| RelativeLayout | layout_   |
+| Button         | button_   |
+| TextView       | text_     |
+| View           | view_     |
+
+For example:
+
+    <TextView
+        android:id="@+id/text_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+Views that typically are only one per layout, such as a toolbar, can simply be given the id of it's view type. E.g.```toolbar```.
+
+#### 2.3.2.2 Strings
+
+All string names should begin with a prefix for the part of the application that they are being referenced from. For example:
+
+| Screen                | String         | Resource Name             |
+|-----------------------|----------------|---------------------------|
+| Registration Fragment | “Register now” | registration_register_now |
+| Sign Up Activity      | “Cancel”       | sign_up_cancel            |
+| Rate App Dialog       | “No thanks”    | rate_app_no_thanks        |
+
+If it’s not possible to name the referenced like the above, we can use the following rules:
+
+| Prefix  | Description                                  |
+|---------|----------------------------------------------|
+| error_  | Used for error messages                      |
+| title_  | Used for dialog titles                       |
+| action_ | Used for option menu actions                 |
+| msg_    | Used for generic message such as in a dialog |
+| label_  | Used for activity labels                     |
+
+Two important things to note for String resources:
+
+ - String resources should never be reused across screens. This can cause issues when it comes to changing a string for a specific screen. It saves future complications by having a single string for each screens usage.
+
+ - String resources should **always** be defined in the strings file and never hardcoded in layout or class files.
+
+#### 2.3.2.3 Styles and Themes
+
+When defining both Styles & Themes, they should be named using UpperCamelCase. For example:
+
+    AppTheme.DarkBackground.NoActionBar
+    AppTheme.LightBackground.TransparentStatusBar
+
+    ProfileButtonStyle
+    TitleTextStyle
+    
+#### 2.3.3 Attributes ordering
+
+Ordering attributes not only looks tidy but it helps to make it quicker when looking for attributes within layout files. As a general rule,
+
+    1. View Id
+    2. Style
+    3. Layout width and layout height
+    4. Other `layout_` attributes, sorted alphabetically
+    5. Remaining attributes, sorted alphabetically
+
+For example:
+
+    <Button
+        android:id="@id/button_accept"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:padding="16dp"
+        android:text="@string/button_skip_sign_in"
+        android:textColor="@color/bluish_gray" />
+
+Note: This formatting can be carried out by using the format feature in android studio -
+
+`cmd + shift + L`
+
+Doing this makes it easy to navigate through XML attributes when it comes to making changes to layout files.
+
+### 2.4 Test style rules
+
+#### 2.4.1 Unit tests
+
+Any Unit Test classes should be written to match the name of the class that the test are targeting, followed by the Test suffix. For example:
+
+| Class                | Test Class               |
+|----------------------|--------------------------|
+| DataManager          | DataManagerTest          |
+| UserProfilePresenter | UserProfilePresenterTest |
+| PreferencesHelper    | PreferencesHelperTest    |
+
+All Test methods should be annotated with the `@Test` annotation, the methods should be named using the following template:
+
+    @Test
+    public void methodNamePreconditionExpectedResult() { }
+
+So for example, if we want to check that the signUp() method with an invalid email address fails, the test would look like:
+
+    @Test
+    public void signUpWithInvalidEmailFails() { }
+
+Tests should focus on testing only what the method name entitles, if there’s extra conditions being tested in your Test method then this should be moved to it’s own individual test.
+
+If a class we are testing contains many different methods, then the tests should be split across multiple test classes - this helps to keep the tests more maintainable and easier to locate. For example, a DatabaseHelper class may need to be split into multiple test classes such as :
+
+    DatabaseHelperUserTest
+    DatabaseHelperPostsTest
+    DatabaseHelperDraftsTest
+
+#### 2.4.2 Espresso tests
+
+Each Espresso test class generally targets an Activity, so the name given to it should match that of the targeted Activity, again followed by Test. For example:
+
+| Class                | Test Class               |
+|----------------------|--------------------------|
+| MainActivity         | MainActivityTest         |
+| ProfileActivity      | ProfileActivityTest      |
+| DraftsActivity       | DraftsActivityTest       |
+
+When using the Espresso API, methods should be chained on new lines to make the statements more readable, for example:
+
+    onView(withId(R.id.text_title))
+            .perform(scrollTo())
+            .check(matches(isDisplayed()))
+
+Chaining calls in this style not only helps us stick to less than 100 characters per line but it also makes it easy to read the chain of events taking place in espresso tests.
+
+## 3. Being consistent
+
+Our parting thought: BE CONSISTENT. If you're edition code, take a few minutes to look at the code around you and determine its style. If they use spaces around if clauses, you should too. If their comments have little boxes of stars around them, make your comments have little boxes of stars around them too.
+
+The point of having style guidelines is to have a common vocabulary of coding, so people can concentrate on what you're saying, rather than on how you're saying it. We present global style rules here so people know the vocabulary. But local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers our of their rhythm when they to to read it.
+
+## 4. Best practices:
+
+### 4.1 Storing sensitive data on a local file and not pushing in a git repo 
+
+### 4.2 MVP Architecture
+
+A brief case study for the Model View Presenter (MVP) Architecture while we were developing apps for the Android Platform is described [here] (https://gist.github.com/grishmashrestha/cefe04eeaf74091fb80d66d6c13631b1).
+
+## 5. Sources
+- https://lftechnology.atlassian.net/wiki/display/AS/Android+Station
+- https://github.com/bufferapp/android-guidelines/blob/master/project_style_guidelines.md
+- https://google.github.io/styleguide/javaguide.html
+- http://source.android.com/source/code-style.html
+- https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md
+- http://tools.android.com/tech-docs/new-build-system/user-guide
+- https://developer.android.com/studio/projects/index.html
