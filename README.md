@@ -205,6 +205,9 @@ A good practice is to not include the word `menu` as part of the name because th
 
 Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 ### 1.4 gitignore
+
+A reference on `.gitignore` file used in our projects can be found [here](https://github.com/github/gitignore/blob/master/Android.gitignore). The file is based on the guidelines provided in [Github's gitignore template](https://github.com/github/gitignore/blob/master/Android.gitignore).
+
 [Here] (https://github.com/github/gitignore/blob/master/Android.gitignore) is a sample of gitignore file.
 
 ## 2. Code Guidelines
