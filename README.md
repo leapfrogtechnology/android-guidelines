@@ -138,7 +138,7 @@ When a class has multiple constructors, or multiple methods with the same name, 
 
 Class names are written in UpperCamelCase.
 
-For classes that extend an Android component, the name of the class should end with the name of the component; for example: SignInActivity, SignInFragment, ImageUploaderService, ChangePasswordDialog.
+For classes that extend an Android component, the name of the class should end with the name of the component; for example: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ChangePasswordDialog`.
 #### 1.3.2 Resource files
 Resources file names are written in __lowercase_underscore__.
 
@@ -213,23 +213,23 @@ Resource files in the values folder should be __plural__, e.g. `strings.xml`, `s
 ##### 2.1.1.1 Don’t ignore exceptions
 Avoid not handling exceptions in the correct manner. For example:
 
-  ``public void setUserId(String id) {
-      try {
-          mUserId = Integer.parseInt(id);
-      } catch (NumberFormatException e) { }
-  }``
+	public void setUserId(String id) {
+    	try {
+        	mUserId = Integer.parseInt(id);
+    	} catch (NumberFormatException e) { }
+	}
 
 This gives no information to both the developer and the user, making it harder to debug and could also leave the user confused if something goes wrong. When catching an exception, we should also always log the error to the console for debugging purposes and if necessary alert the user of the issue. For example:
 
-  ``public void setCount(String count) {
-      try {
-          count = Integer.parseInt(id);
-      } catch (NumberFormatException e) {
-        count = 0;
-          Log.e(TAG, "There was an error parsing the count " + e);
-          DialogFactory.showErrorMessage(R.string.error_message_parsing_count);
-      }
-  }``
+	public void setCount(String count) {
+    	try {
+        	count = Integer.parseInt(id);
+    	} catch (NumberFormatException e) {
+    		count = 0;
+        	Log.e(TAG, "There was an error parsing the count " + e);
+        	DialogFactory.showErrorMessage(R.string.error_message_parsing_count);
+    	}
+	}
 
 Here we handle the error appropriately by:
 
@@ -241,14 +241,14 @@ Here we handle the error appropriately by:
 
 Catching exceptions generally should not be done:
 
-  ``public void openCustomTab(Context context, Uri uri) {
-      Intent intent = buildIntent(context, uri);
-      try {
-          context.startActivity(intent);
-      } catch (Exception e) {
-          Log.e(TAG, "There was an error opening the custom tab " + e);
-      }
-  }``
+	public void openCustomTab(Context context, Uri uri) {
+    	Intent intent = buildIntent(context, uri);
+    	try {
+        	context.startActivity(intent);
+    	} catch (Exception e) {
+        	Log.e(TAG, "There was an error opening the custom tab " + e);
+    	}
+	}
 
 Why?
 
@@ -256,20 +256,20 @@ Why?
 
 Instead, catch the expected exception and handle it accordingly:
 
-  public void openCustomTab(Context context, Uri uri) {
+    public void openCustomTab(Context context, Uri uri) {
       Intent intent = buildIntent(context, uri);
       try {
           context.startActivity(intent);
       } catch (ActivityNotFoundException e) {
           Log.e(TAG, "There was an error opening the custom tab " + e);
       }
-  }
+    }
 
 ##### 2.1.1.3 Grouping Exceptions
 
 Where exceptions execute the same code, they should be grouped in-order to increase readability and avoid code duplication. For example, where you may do this:
 
-  public void openCustomTab(Context context, @Nullable Uri uri) {
+    public void openCustomTab(Context context, @Nullable Uri uri) {
       Intent intent = buildIntent(context, uri);
       try {
           context.startActivity(intent);
@@ -280,11 +280,11 @@ Where exceptions execute the same code, they should be grouped in-order to incre
       } catch (SomeOtherException e) {
         // Show some dialog
         }
-  }
+    }
 
 You could do this:
 
-  public void openCustomTab(Context context, @Nullable Uri uri) {
+    public void openCustomTab(Context context, @Nullable Uri uri) {
       Intent intent = buildIntent(context, uri);
       try {
           context.startActivity(intent);
@@ -293,7 +293,7 @@ You could do this:
       } catch (SomeOtherException e) {
         // Show some dialog
         }
-  }
+    }
 
 ##### 2.1.1.4 Using try-catch over throw exception
 
@@ -309,11 +309,11 @@ Android doesn't use finalizers. In most cases, you can do what you need from a f
 
 When you want to use class Bar from package foo,there are two possible ways to import it:
 
-```import foo.*;```
+    import foo.*;
 
 Potentially reduces the number of import statements.
 
-```import foo.Bar;```
+    import foo.Bar;
 
 Makes it obvious what classes are actually used and the code is more readable for maintainers.
 
@@ -331,35 +331,35 @@ All fields should be declared at the top of the file, following these rules:
 
 - Private, non-static field names should not start with m. This is right:
   
-  userSignedIn, userNameText, acceptButton
+  `userSignedIn`, `userNameText`, `acceptButton`
 
 Not this:
 
-  mUserSignedIn, mUserNameText, mAcceptButton
+  `mUserSignedIn`, `mUserNameText`, `mAcceptButton`
 
 Private, static field names do not need to start with an s. This is right:
 
-  someStaticField, userNameText
+  `someStaticField`, `userNameText`
 
 Not this:
-  sSomeStaticField, sUserNameText
+  `sSomeStaticField`, `sUserNameText`
 
 - All other fields also start with a lower case letter.
-
-  int numOfChildren;
-  String username;
+    
+      int numOfChildren;
+      String username;
 
 - Static final fields (known as constants) are ALL_CAPS_WITH_UNDERSCORES.
 
-  private static final int PAGE_COUNT = 0;
+      private static final int PAGE_COUNT = 0;
 
 Field names that do not reveal intention should not be used. For example,
 
-  int e; //number of elements in the list
+    int e; //number of elements in the list
 
 why not just give the field a meaningful name in the first place, rather than leaving a comment!
 
-  int numberOfElements;
+    int numberOfElements;
 
 That's much better!
 
@@ -396,9 +396,9 @@ If and when container names change in the future, the naming of these can often 
 
 Naming variables, method and / or classes with similar names can make it confusing for other developers reading over your code. For example:
 
-  hasUserSelectedSingleProfilePreviously
+    hasUserSelectedSingleProfilePreviously
 
-  hasUserSelectedSignedProfilePreviously
+    hasUserSelectedSignedProfilePreviously
 
 Distinguishing the difference between these at a first glance can be hard to understand what is what. Naming these in a clearer way can make it easier for developers to navigate the fields in your code.
 
@@ -406,11 +406,11 @@ Distinguishing the difference between these at a first glance can be hard to und
 
 When Android Studio auto-generates code for us, it's easy to leave things as they are - even when it generate horribly named parameters! For example, this isn't very nice:
 
-  public void doSomething(String s1, String s2, String s3)
+    public void doSomething(String s1, String s2, String s3)
 
 It's hard to understand what these parameters do without reading the code. Instead:
 
-  public void doSomething(String userName, String userEmail, String userId)
+    public void doSomething(String userName, String userEmail, String userId)
 
 That makes it much easier to understand! Now we'll be able to read the code following the parameter with a much clearer understanding 🙂
 
@@ -460,13 +460,11 @@ This creates a stream of whitespace which is known to make text difficult to rea
 
 For blocks, 4 space indentation should be used:
 
-
     if (userSignedIn) {
         count = 1;
     }
 
 Whereas for line wraps, 8 spaces should be used:
-
 
     String userAboutText =
             "This is some text about the user and it is pretty long, can you see!"
@@ -495,12 +493,11 @@ Braces should always be used on the same line as the code before them. For examp
 
           }
       }
-  }
+    }
 
 And instead, do this:
 
-
-  class SomeClass {
+    class SomeClass {
       private void someFunction() {
           if (isSomething) {
 
@@ -510,7 +507,7 @@ And instead, do this:
 
           }
       }
-  }
+    }
 
 Not only is the extra line for the space not really necessary, but it makes blocks easier to follow when reading the code.
 
@@ -662,23 +659,23 @@ Any fields declared at the top of a class file should be ordered in the followin
 
 For example:
 
-  public static enum {
-    ENUM_ONE, ENUM_TWO
-  }
+    public static enum {
+      ENUM_ONE, ENUM_TWO
+    }
 
-  public static final String KEY_NAME = "KEY_NAME";
-  public static final int COUNT_USER = 0;
+    public static final String KEY_NAME = "KEY_NAME";
+    public static final int COUNT_USER = 0;
 
-  @Inject SomeAdapter someAdapter;
+    @Inject SomeAdapter someAdapter;
 
-  @BindView(R.id.text_name) TextView nameText;
-  @BindView(R.id.image_photo) ImageView photoImage;
+    @BindView(R.id.text_name) TextView nameText;
+    @BindView(R.id.image_photo) ImageView photoImage;
 
-  private int userCount;
-  private String errorMessage;
+    private int userCount;
+    private String errorMessage;
 
-  public int someCount;
-  public String someString;
+    public int someCount;
+    public String someString;
 
 Using this ordering convention helps to keep field declarations grouped, which increases both the locating of and readability of said fields.
 
