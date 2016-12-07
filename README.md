@@ -102,6 +102,10 @@ The package statement is not line-wrapped. The column limit (Column limit: 100) 
 ##### 1.2.3.1 No wildcard imports
 
 Wildcard imports, static or otherwise, are not used.
+Don't use
+java.io.*
+Use
+java.io.File
 
 ##### 1.2.3.2 No line-wrapping
 
