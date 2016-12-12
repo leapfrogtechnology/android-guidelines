@@ -798,9 +798,30 @@ When defining methods, parameters should be ordered to the following convention:
 
 #### 2.2.17 String constants, naming and values
 
-When using string constants, they should be declared as final static and use the follow conventions:
+When using string constants, they should be declared as `static final` and use the follow conventions:
 
 [Strings table]
+| Element            | Field Name Prefix |
+| -----------------  | ----------------- |
+| SharedPreferences  | `PREF_`             |
+| Bundle             | `BUNDLE_`           |
+| Fragment Arguments | `ARGUMENT_`         |
+| Intent Extra       | `EXTRA_`            |
+| Intent Action      | `ACTION_`           |
+
+Note that the arguments of a Fragment - `Fragment.getArguments()` - are also a Bundle. However, because this is a quite common use of Bundles, we define a different prefix for them.
+
+Example:
+
+```java
+// Note the value of the field is the same as the name to avoid duplication issues
+static final String PREF_EMAIL = "PREF_EMAIL";
+static final String BUNDLE_AGE = "BUNDLE_AGE";
+static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
+
+// Intent-related items use full package name as value
+static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
+static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
 
 #### 2.2.18 Enums
 
