@@ -800,7 +800,7 @@ When defining methods, parameters should be ordered to the following convention:
 
 When using string constants, they should be declared as `static final` and use the follow conventions:
 
-[Strings table]
+
 | Element            | Field Name Prefix |
 | -----------------  | ----------------- |
 | SharedPreferences  | `PREF_`             |
