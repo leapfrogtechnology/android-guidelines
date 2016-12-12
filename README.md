@@ -1192,7 +1192,9 @@ All IDs should be prefixed using the name of the element that they have been dec
 | RelativeLayout | layout_   |
 | Button         | button_   |
 | TextView       | text_     |
-| View           | view_     |
+| View           | view_     |  
+| EditText	 | edit_     |
+
 
 For example:
 
@@ -1338,3 +1340,4 @@ A brief case study for the Model View Presenter (MVP) Architecture while we were
 - https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md
 - http://tools.android.com/tech-docs/new-build-system/user-guide
 - https://developer.android.com/studio/projects/index.html
+- https://github.com/ribot/android-guidelines/edit/master/project_and_code_guidelines.md
