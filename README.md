@@ -1333,6 +1333,7 @@ The point of having style guidelines is to have a common vocabulary of coding, s
 A brief case study for the Model View Presenter (MVP) Architecture while we were developing apps for the Android Platform is described [here] (https://gist.github.com/grishmashrestha/cefe04eeaf74091fb80d66d6c13631b1).
 
 ## 5. Sources
+- https://github.com/futurice/android-best-practices#gradle-configuration (Prefer to follow this)
 - https://lftechnology.atlassian.net/wiki/display/AS/Android+Station
 - https://github.com/bufferapp/android-guidelines/blob/master/project_style_guidelines.md
 - https://google.github.io/styleguide/javaguide.html
