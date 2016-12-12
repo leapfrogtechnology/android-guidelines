@@ -102,9 +102,13 @@ The package statement is not line-wrapped. The column limit (Column limit: 100) 
 ##### 1.2.3.1 No wildcard imports
 
 Wildcard imports, static or otherwise, are not used.
+
 Don't use
+
 java.io.*
+
 Use
+
 java.io.File
 
 ##### 1.2.3.2 No line-wrapping
@@ -129,9 +133,37 @@ Each top-level class resides in a source file of its own.
 
 ##### 1.3.4.2 Class member ordering
 
-The ordering of the members of a class can have a great effect on learnability, but there is no single correct recipe for how to do it. Different classes may order their members differently.
+The ordering of the members of a class can have a great effect on learnability, but there is no single correct recipe for how to do it but using a logical and consistent order will improve code learnability and readability. It is recommendable to use the following order:
 
-What is important is that each class order its members in some logical order, which its maintainer could explain if asked. For example, new methods are not just habitually added to the end of the class, as that would yield "chronological by date added" ordering, which is not a logical ordering.
+
+1. Constants
+2. Fields
+3. Constructors
+4. Override methods and callbacks (public or private)
+5. Public methods
+6. Private methods
+7. Inner classes or interfaces
+
+If your class is extending an __Android component__ such as an Activity or a Fragment, it is a good practice to order the override methods so that they __match the component's lifecycle__. For example, if you have an Activity that implements `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, then the correct order is:
+
+```java
+public class MainActivity extends Activity {
+
+	//Order matches Activity lifecycle
+    @Override
+    public void onCreate() {}
+
+    @Override
+    public void onResume() {}
+
+    @Override
+    public void onPause() {}
+
+    @Override
+    public void onDestroy() {}
+
+}
+```
 
 ###### 1.3.4.2.1 Overloads: never split
 
