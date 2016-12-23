@@ -2,7 +2,15 @@
 
 ## Coding Guidelines
 
-1. [Java Guidelines] (JavaGuidelines.md)
+1. [Project Structure] (ProjectStructure.md)
+2. [Java Guidelines] (JavaGuidelines.md)
+3. [Resources Guidelines] (ResourcesGuidelines.md)
+4. [Android Manifest Guidelines] (Manifest.md)
+5. [Gradle Best Practices] (Gradle.md)
+
+## Using library
+
+1. [Butterknife] (Libraries/Butterknife.md)
 
 ## Being consistent
 
