@@ -18,27 +18,51 @@ signingConfigs {
 }
 ```
 
-Instead, make a `gradle.properties` file which should _not_ be added to the version control system:
+Instead, make a `keystore.properties` file which should _not_ be added to the version control system:
 
 ```
-KEYSTORE_PASSWORD=password123
-KEY_PASSWORD=password789
+storePassword=test123
+keyPassword=test1234
+keyAlias=sch
+storeFile=/Users/ayush/sch.keystore
 ```
 
-That file is automatically imported by Gradle, so you can use it in `build.gradle` as such:
+To import the properties for build configuration follow the steps listed below:
+
+i. In your module's build.gradle file, add code to load your keystore.properties file before the android {} block.
 
 ```groovy
-signingConfigs {
-    release {
-        try {
-            storeFile file("myapp.keystore")
-            storePassword KEYSTORE_PASSWORD
-            keyAlias "thekey"
-            keyPassword KEY_PASSWORD
-        }
-        catch (ex) {
-            throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+...
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    ...
+}
+```
+
+Note: You could choose to store your keystore.properties file in another location (for example, in the module folder rather than the root folder for the project, or on your build server if you are using a continuous integration tool). In that case, you should modify the code above to correctly initialize keystorePropertiesFile using your actual keystore.properties file's location.
+
+ii. You can refer to properties stored in `keystoreProperties` using the syntax `keystoreProperties['propertyName']`. Modify the `signingConfigs` block of your module's `build.gradle` file to reference the signing information stored in keystoreProperties using this syntax.
+
+```groovy
+android {
+    signingConfigs {
+        config {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
-}
+    ...
+  }
 ```

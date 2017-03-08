@@ -7,6 +7,7 @@
 3. [Resources Guidelines] (ResourcesGuidelines.md)
 4. [Android Manifest Guidelines] (Manifest.md)
 5. [Gradle Best Practices] (Gradle.md)
+6. [Building and Signing apps] (Signing.md)
 
 ## Using library
 
@@ -29,3 +30,4 @@ The point of having style guidelines is to have a common vocabulary of coding, s
 - https://developer.android.com/studio/projects/index.html
 - https://github.com/ribot/android-guidelines/edit/master/project_and_code_guidelines.md
 - https://medium.com/rocknnull/effective-java-for-android-cheatsheet-bf4e3433889a#.2p879tgbo
+- https://developer.android.com/studio/publish/app-signing.html
