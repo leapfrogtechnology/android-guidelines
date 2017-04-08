@@ -28,5 +28,5 @@ The point of having a style guide is to have a common vocabulary of coding, so p
 - https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md
 - http://tools.android.com/tech-docs/new-build-system/user-guide
 - https://developer.android.com/studio/projects/index.html
-- https://github.com/ribot/android-guidelines/edit/master/project_and_code_guidelines.md
+- https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
 - https://medium.com/rocknnull/effective-java-for-android-cheatsheet-bf4e3433889a#.2p879tgbo
