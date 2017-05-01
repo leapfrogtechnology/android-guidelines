@@ -21,7 +21,6 @@ The point of having style guidelines is to have a common vocabulary of coding, s
 
 ## Sources
 - https://github.com/futurice/android-best-practices#gradle-configuration (Prefer to follow this)
-- https://lftechnology.atlassian.net/wiki/display/AS/Android+Station
 - https://github.com/bufferapp/android-guidelines/blob/master/project_style_guidelines.md
 - https://google.github.io/styleguide/javaguide.html
 - http://source.android.com/source/code-style.html
