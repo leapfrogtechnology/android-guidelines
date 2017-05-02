@@ -187,15 +187,17 @@ Not only does this help keep the strings file tidy, but it makes it easier to fi
 
 When defining both Styles & Themes, they should be named using UpperCamelCase. For example:
 
+```
     AppTheme.DarkBackground.NoActionBar
     AppTheme.LightBackground.TransparentStatusBar
 
     ProfileButtonStyle
     TitleTextStyle
+```
 
 ## xml
 
-# XML Best Practices
+# Best Practices
 
 ## Use self closing tags
 
@@ -203,15 +205,25 @@ When a View in an XML layout does not have any child views, self-closing tags sh
 
 Do:
 
+```xml
     <ImageView
         android:id="@+id/imageview_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+```
 
 Don’t:
 
+```xml
     <ImageView
         android:id="@+id/imageview_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </ImageView>
+```
+
+## Remove unused resources
+
+Unused resources and ids should be removed from the project.
+
+Use **Refactor -> Remove Unused Resources** in menu bar to remove unused resources.
