@@ -2,9 +2,9 @@
 
 ## Manifest File structure
 
-The code snippet below shows the general structure of the manifest file and every element that it can contain.It is preferable to maintain the order of the elements.
+The code snippet below shows the general structure of the manifest file and every element that it can contain. It is preferable to maintain the order of the elements.
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 
 <manifest>
