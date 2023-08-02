@@ -78,16 +78,18 @@ All IDs should be prefixed using the name of the element that they have been dec
 | ImageView      | imageview_     |
 | Button         | button_        |
 | TextView       | textview_      |
-| EditText	     | edittext_      |
+| EditText         | edittext_      |
 | View           | view_          |
 | ProgressBar    | progressbar_   |  
 
 For example:
 
+```xml
     <TextView
         android:id="@+id/textview_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+```
 
 Views that typically are only one per layout, such as a toolbar, can simply be given the id of it's view type. E.g.```toolbar```.
 
@@ -103,6 +105,7 @@ Ordering attributes not only looks tidy but it helps to make it quicker when loo
 
 For example:
 
+```xml
     <Button
         android:id="@id/button_accept"
         style="@style/ButtonStyle"
@@ -113,6 +116,7 @@ For example:
         android:padding="16dp"
         android:text="@string/button_skip_sign_in"
         android:textColor="@color/bluish_gray" />
+```
 
 Note: This formatting can be carried out by using the format feature in android studio -
 
@@ -168,7 +172,7 @@ Two important things to note for String resources:
 
 ### Sectioning code
 
-String resources defined within the string.xml file should be section by feature, for example:
+String resources defined within the strings.xml file should be section by feature, for example:
 
 ```xml
     // User Profile Activity

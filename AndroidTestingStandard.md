@@ -1,4 +1,4 @@
-# Android Coding Standard
+# Android Testing Standard
 
 ### 2.4 Test style rules
 
@@ -14,8 +14,10 @@ Any Unit Test classes should be written to match the name of the class that the 
 
 All Test methods should be annotated with the `@Test` annotation, the methods should be named using the following template:
 
+```java
     @Test
     public void methodNamePreconditionExpectedResult() { }
+```
 
 So for example, if we want to check that the signUp() method with an invalid email address fails, the test would look like:
 
@@ -26,9 +28,11 @@ Tests should focus on testing only what the method name entitles, if there’s e
 
 If a class we are testing contains many different methods, then the tests should be split across multiple test classes - this helps to keep the tests more maintainable and easier to locate. For example, a DatabaseHelper class may need to be split into multiple test classes such as :
 
+```java
     DatabaseHelperUserTest
     DatabaseHelperPostsTest
     DatabaseHelperDraftsTest
+```
 
 #### 2.4.2 Espresso tests
 
@@ -42,23 +46,21 @@ Each Espresso test class generally targets an Activity, so the name given to it 
 
 When using the Espresso API, methods should be chained on new lines to make the statements more readable, for example:
 
+```java
     onView(withId(R.id.text_title))
             .perform(scrollTo())
             .check(matches(isDisplayed()))
+```
 
-Chaining calls in this style not only helps us stick to less than 100 characters per line but it also makes it easy to read the chain of events taking place in espresso tests.
+Chaining calls in this style not only helps us stick to less than 100 characters per line but it also makes it easy to read the chain of events taking place in Espresso tests.
 
 ## 3. Being consistent
 
-Our parting thought: BE CONSISTENT. If you're edition code, take a few minutes to look at the code around you and determine its style. If they use spaces around if clauses, you should too. If their comments have little boxes of stars around them, make your comments have little boxes of stars around them too.
+Our parting thought: BE CONSISTENT. If you're editing code, take a few minutes to look at the code around you and determine its style. If they use spaces around if clauses, you should too. If their comments have little boxes of stars around them, make your comments have little boxes of stars around them too.
 
-The point of having style guidelines is to have a common vocabulary of coding, so people can concentrate on what you're saying, rather than on how you're saying it. We present global style rules here so people know the vocabulary. But local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers our of their rhythm when they to to read it.
+The point of having style guidelines is to have a common vocabulary of coding, so people can concentrate on what you're saying, rather than on how you're saying it. We present global style rules here so people know the vocabulary. But local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers out of their rhythm when they try to read it.
 
-### 4.2 MVP Architecture
-
-A brief case study for the Model View Presenter (MVP) Architecture while we were developing apps for the Android Platform is described [here] (https://gist.github.com/grishmashrestha/cefe04eeaf74091fb80d66d6c13631b1).
-
-## 5. Sources
+## 4. Sources
 - https://github.com/futurice/android-best-practices#gradle-configuration (Prefer to follow this)
 - https://lftechnology.atlassian.net/wiki/display/AS/Android+Station
 - https://github.com/bufferapp/android-guidelines/blob/master/project_style_guidelines.md

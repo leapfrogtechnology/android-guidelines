@@ -15,7 +15,7 @@ A source file consists of, in order:
 
 Because we use Android Studio, so imports should always be ordered automatically. However, in the case that they may not be, then they should be ordered as follows:
 
-1. Android imports
+1. Android imports
 2. Imports from third parties
 3. java and javax imports
 4. Imports from the current Project
@@ -88,57 +88,57 @@ To improve code readability, it’s important to organise class members in a log
 For example:
 
 ```java
-    public class MainActivity extends Activity {
+public class MainActivity extends Activity {
 
-        private int count;
+    private int count;
 
-        public static newInstance() { }
+    public static newInstance() { }
 
-        @Override
-        public void onCreate() { }
+    @Override
+    public void onCreate() { }
 
-        public setUsername() { }
+    public setUsername() { }
 
-        private void setupUsername() { }
+    private void setupUsername() { }
 
-        static class AnInnerClass { }
+    static class AnInnerClass { }
 
-        interface SomeInterface { }
+    interface SomeInterface { }
 
-    }
+}
 ```
 
 Any lifecycle methods used in Android framework classes should be ordered in the corresponding lifecycle order. For example:
 
 ```java
-    public class MainActivity extends Activity {
+public class MainActivity extends Activity {
 
-        // Field and constructors
+    // Field and constructors
 
-        @Override
-        public void onCreate() { }
+    @Override
+    public void onCreate() { }
 
-        @Override
-        public void onStart() { }
+    @Override
+    public void onStart() { }
 
-        @Override
-        public void onResume() { }
+    @Override
+    public void onResume() { }
 
-        @Override
-        public void onPause() { }
+    @Override
+    public void onPause() { }
 
-        @Override
-        public void onStop() { }
+    @Override
+    public void onStop() { }
 
-        @Override
-        public void onRestart() { }
+    @Override
+    public void onRestart() { }
 
-        @Override
-        public void onDestroy() { }
+    @Override
+    public void onDestroy() { }
 
-        // public methods, private methods, inner classes and interfaces
+    // public methods, private methods, inner classes and interfaces
 
-    }
+}
 ```
 
 **Note:**
@@ -169,7 +169,7 @@ For classes that extend an Android component, the name of the class should end w
 
 All fields should be declared at the top of the file, following these rules:
 
-- Private, non-static field names should not start with m. This is right:
+Private, non-static field names should not start with m. This is right:
 
   `userSignedIn`, `userNameText`, `acceptButton`
 
@@ -182,28 +182,29 @@ Private, static field names do not need to start with an s. This is right:
   `someStaticField`, `userNameText`
 
 Not this:
+
   `sSomeStaticField`, `sUserNameText`
 
-- All other fields also start with a lower case letter.
+All other fields also start with a lower case letter:
 
 ```java
-      int numOfChildren;
-      String username;
+    int numOfChildren;
+    String username;
 ```
 
-- Static final fields (known as constants) are ALL_CAPS_WITH_UNDERSCORES.
+Static final fields (known as constants) are ALL_CAPS_WITH_UNDERSCORES:
 
 ```java
-      private static final int PAGE_COUNT = 0;
+    private static final int PAGE_COUNT = 0;
 ```
 
-Field names that do not reveal intention should not be used. For example,
+Field names that do not reveal intention should not be used. For example:
 
 ```java
     int e; //number of elements in the list
 ```
 
-why not just give the field a meaningful name in the first place, rather than leaving a comment!
+Why not just give the field a meaningful name in the first place, rather than leaving a comment?
 
 ```java
     int numberOfElements;
@@ -242,7 +243,7 @@ If and when container names change in the future, the naming of these can often 
 
 #### Avoid similar naming
 
-Naming variables, method and / or classes with similar names can make it confusing for other developers reading over your code. For example:
+Naming variables, method and/or classes with similar names can make it confusing for other developers reading over your code. For example:
 
 ```
     hasUserSelectedSingleProfilePreviously
@@ -266,7 +267,7 @@ It's hard to understand what these parameters do without reading the code. Inste
     public void doSomething(String userName, String userEmail, String userId)
 ```
 
-That makes it much easier to understand! Now we'll be able to read the code following the parameter with a much clearer understanding 🙂
+That makes it much easier to understand! Now we'll be able to read the code following the parameter with a much clearer understanding. 🙂
 
 #### Pronounceable names
 
@@ -312,14 +313,14 @@ Note that the arguments of a Fragment - `Fragment.getArguments()` - are also a B
 Example:
 
 ```java
-// Note the value of the field is the same as the name to avoid duplication issues
-static final String PREF_EMAIL = "PREF_EMAIL";
-static final String BUNDLE_AGE = "BUNDLE_AGE";
-static final String ARG_USER_ID = "ARG_USER_ID";
+    // Note the value of the field is the same as the name to avoid duplication issues
+    static final String PREF_EMAIL = "PREF_EMAIL";
+    static final String BUNDLE_AGE = "BUNDLE_AGE";
+    static final String ARG_USER_ID = "ARG_USER_ID";
 
-// Intent-related items use full package name as value
-static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
-static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
+    // Intent-related items use full package name as value
+    static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
+    static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
 ```
 
 
@@ -333,9 +334,9 @@ Any declaration of variables should not use any special form of alignment, for e
 This is fine:
 
 ```java
+    private String username = "hitherejoe";
     private int userId = 8;
     private int count = 0;
-    private String username = "hitherejoe";
 ```
 
 Avoid doing this:
@@ -419,8 +420,8 @@ In the case that a method contains long parameters, we should line break where a
 
 ```java
     private void someMethod(Context context, String someLongStringName, String text,
-                                long thisIsALong, String anotherString) {               
-    }             
+                                long thisIsALong, String anotherString) {
+    }
 ```
 
 And when calling that method we should break after the comma of each parameter:
@@ -479,7 +480,7 @@ Not this:
 
 #### Inline comments
 
-Where necessary, inline comments should be used to provide a meaningful description to the reader on what a specific piece of code does. They should only be used in situations where the code may be complex to understand. In most cases however, code should be written in a way that it easy to understand without comments 🙂
+Where necessary, inline comments should be used to provide a meaningful description to the reader on what a specific piece of code does. They should only be used in situations where the code may be complex to understand. In most cases however, code should be written in a way that it easy to understand without comments. 🙂
 
 **Note:** Code comments do not have to, but should try to, stick to the 100 character rule.
 
@@ -502,17 +503,17 @@ When creating class comments they should be meaningful and descriptive, using li
 
 ```java
     /**
-      * RecyclerView adapter to display a list of {@link Post}.
-      * Currently used with {@link PostRecycler} to show the list of Post items.
-      */
+     * RecyclerView adapter to display a list of {@link Post}.
+     * Currently used with {@link PostRecycler} to show the list of Post items.
+     */
 ```
 
 Don’t leave author comments, these aren’t useful and provide no real meaningful information when multiple people are to be working on the class.
 
 ```java
     /**
-      * Created By Joe 18/06/2016
-      */
+     * Created By Joe 18/06/2016
+     */
 ```
 
 ### TODO
@@ -520,12 +521,12 @@ Don’t leave author comments, these aren’t useful and provide no real meaning
 Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect. TODOs should include the string TODO in all caps, followed by a colon:
 
 ```java
-// TODO: Remove this code after the UrlTable2 has been checked in.
+    // TODO: Remove this code after the UrlTable2 has been checked in.
 ```
 and
 
 ```java
-// TODO: Change this to use a flag instead of a constant.
+    // TODO: Change this to use a flag instead of a constant.
 ```
 If your TODO is of the form "At a future date do something" make sure that you either include a very specific date ("Fix by November 2005") or a very specific event ("Remove this code after all production mixers understand protocol V7.").
 
@@ -568,25 +569,27 @@ This makes sectioned methods easier to located in a class.
 Avoid not handling exceptions in the correct manner. For example:
 
 ```java
-	public void setUserId(String id) {
-    	try {
-        	mUserId = Integer.parseInt(id);
-    	} catch (NumberFormatException e) { }
-	}
+    public void setUserId(String id) {
+        try {
+            mUserId = Integer.parseInt(id);
+        } catch (NumberFormatException e) {
+            // <- wrong!
+        }
+    }
 ```
 
 This gives no information to both the developer and the user, making it harder to debug and could also leave the user confused if something goes wrong. When catching an exception, we should also always log the error to the console for debugging purposes and if necessary alert the user of the issue. For example:
 
 ```java
-	public void setCount(String count) {
-    	try {
-        	count = Integer.parseInt(id);
-    	} catch (NumberFormatException e) {
-    		count = 0;
-        	Log.e(TAG, "There was an error parsing the count " + e);
-        	DialogFactory.showErrorMessage(R.string.error_message_parsing_count);
-    	}
-	}
+    public void setCount(String count) {
+        try {
+            count = Integer.parseInt(id);
+        } catch (NumberFormatException e) {
+            count = 0;
+            Log.e(TAG, "There was an error parsing the count " + e);
+            DialogFactory.showErrorMessage(R.string.error_message_parsing_count);
+        }
+    }
 ```
 
 Here we handle the error appropriately by:
@@ -600,30 +603,32 @@ Here we handle the error appropriately by:
 Catching exceptions generally should not be done:
 
 ```java
-	public void openCustomTab(Context context, Uri uri) {
-    	Intent intent = buildIntent(context, uri);
-    	try {
-        	context.startActivity(intent);
-    	} catch (Exception e) {
-        	Log.e(TAG, "There was an error opening the custom tab " + e);
-    	}
-	}
+    public void openCustomTab(Context context, Uri uri) {
+        Intent intent = buildIntent(context, uri);
+        try {
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "There was an error opening the custom tab " + e);
+        }
+    }
 ```
 
 Why?
 
-*Do not do this. In almost all cases it is inappropriate to catch generic Exception or Throwable (preferably not Throwable because it includes Error exceptions). It is very dangerous because it means that Exceptions you never expected (including RuntimeExceptions like ClassCastException) get caught in application-level error handling. It obscures the failure handling properties of your code, meaning if someone adds a new type of Exception in the code you're calling, the compiler won't help you realize you need to handle the error differently. In most cases you shouldn't be handling different types of exception the same way.* - taken from the Android Code Style Guidelines
+Taken from the Android code style guide:
+
+Do not do this. In almost all cases it is inappropriate to catch generic Exception or Throwable (preferably not Throwable because it includes Error exceptions). It is very dangerous because it means that Exceptions you never expected (including RuntimeExceptions like ClassCastException) get caught in application-level error handling. It obscures the failure handling properties of your code, meaning if someone adds a new type of Exception in the code you're calling, the compiler won't help you realize you need to handle the error differently. In most cases you shouldn't be handling different types of exception the same way.
 
 Instead, catch the expected exception and handle it accordingly:
 
 ```java
     public void openCustomTab(Context context, Uri uri) {
-      Intent intent = buildIntent(context, uri);
-      try {
-          context.startActivity(intent);
-      } catch (ActivityNotFoundException e) {
-          Log.e(TAG, "There was an error opening the custom tab " + e);
-      }
+        Intent intent = buildIntent(context, uri);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "There was an error opening the custom tab " + e);
+        }
     }
 ```
 
@@ -633,15 +638,15 @@ Where exceptions execute the same code, they should be grouped in-order to incre
 
 ```java
     public void openCustomTab(Context context, @Nullable Uri uri) {
-      Intent intent = buildIntent(context, uri);
-      try {
-          context.startActivity(intent);
-      } catch (ActivityNotFoundException e) {
-          Log.e(TAG, "There was an error opening the custom tab " + e);
-      } catch (NullPointerException e) {
-          Log.e(TAG, "There was an error opening the custom tab " + e);
-      } catch (SomeOtherException e) {
-        // Show some dialog
+        Intent intent = buildIntent(context, uri);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "There was an error opening the custom tab " + e);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "There was an error opening the custom tab " + e);
+        } catch (SomeOtherException e) {
+            // Show some dialog
         }
     }
 ```
@@ -650,13 +655,13 @@ You could do this:
 
 ```java
     public void openCustomTab(Context context, @Nullable Uri uri) {
-      Intent intent = buildIntent(context, uri);
-      try {
-          context.startActivity(intent);
-      } catch (ActivityNotFoundException e | NullPointerException e) {
-          Log.e(TAG, "There was an error opening the custom tab " + e);
-      } catch (SomeOtherException e) {
-        // Show some dialog
+        Intent intent = buildIntent(context, uri);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e | NullPointerException e) {
+            Log.e(TAG, "There was an error opening the custom tab " + e);
+        } catch (SomeOtherException e) {
+            // Show some dialog
         }
     }
 ```
@@ -681,7 +686,7 @@ When you want to use class Bar from package foo,there are two possible ways to i
     import foo.*;
 ```
 
-Potentially reduces the number of import statements.
+Potentially reduces the number of import statements:
 
 ```java
     import foo.Bar;
@@ -702,40 +707,40 @@ All unused fields, imports, methods and classes should be removed from the code 
 Braces should always be used on the same line as the code before them. For example, avoid doing this:
 
 ```java
-    class SomeClass
+class SomeClass
+{
+    private void someFunction()
     {
-      private void someFunction()
-      {
-          if (isSomething)
-          {
+        if (isSomething)
+        {
 
-          }
-          else if (!isSomethingElse)
-          {
+        }
+        else if (!isSomethingElse)
+        {
 
-          }
-          else
-          {
+        }
+        else
+        {
 
-          }
-      }
+        }
     }
+}
 ```
 
 And instead, do this:
 
 ```java
-    class SomeClass {
-      private void someFunction() {
-          if (isSomething) {
+class SomeClass {
+    private void someFunction() {
+        if (isSomething) {
 
-          } else if (!isSomethingElse) {
+        } else if (!isSomethingElse) {
 
-          } else {
+        } else {
 
-          }
-      }
+        }
     }
+}
 ```
 
 Not only is the extra line for the space not really necessary, but it makes blocks easier to follow when reading the code.
@@ -804,7 +809,7 @@ and takes up far fewer lines of code than this:
 
 #### Annotation practices
 
-Taken from  the Android code style guide:
+Taken from the Android code style guide:
 
 **@Override:** The `@Override` annotation must be used whenever a method overrides the declaration or implementation from a super-class. For example, if you use the `@inheritdocs` Javadoc tag, and derive from a class (not an interface), you must also annotate that the method `@Overrides` the parent class's method.
 
@@ -827,9 +832,6 @@ Annotations that are applied to a method or class should always be defined in th
     @Bind(R.id.layout_coordinator)
     CoordinatorLayout coordinatorLayout;
 
-    @Bind(R.id.layout_coordinator)
-    CoordinatorLayout coordinatorLayout;
-
     @Inject
     MainPresenter mainPresenter;
 
@@ -837,10 +839,10 @@ Annotations that are applied to a method or class should always be defined in th
     @AnotherAnnotation
     public class SomeClass {
 
-      @SomeAnotation
-      public String getMeAString() {
+        @SomeAnotation
+        public String getMeAString() {
 
-      }
+        }
 
     }
 ```
@@ -943,7 +945,9 @@ When creating new instances of a fragment or activity that involves passing data
 
 The scope of local variables should be kept to a minimum (Effective Java Item 29). By doing so, you increase the readability and maintainability of your code and reduce the likelihood of error. Each variable should be declared in the innermost block that encloses all uses of the variable.
 
-Local variables should be declared at the point they are first used. Nearly every local variable declaration should contain an initializer. If you don't yet have enough information to initialize a variable sensibly, you should postpone the declaration until you do. - taken from the Android code style guidelines
+Taken from the Android code style guide:
+
+Local variables should be declared at the point they are first used. Nearly every local variable declaration should contain an initializer. If you don't yet have enough information to initialize a variable sensibly, you should postpone the declaration until you do.
 
 ### Force non-instantiability
 
@@ -954,7 +958,7 @@ class DateTimeUtils {
 
     /**
      * Prevents instantiation
-     **/
+     */
     private DateTimeUtils() {}
 
     static String formatDate(Date date) {
